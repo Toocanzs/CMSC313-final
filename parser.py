@@ -23,6 +23,11 @@ EXP
 PRINT
 """
 
+print("Input code:")
+print("-"*10)
+print(code)
+print("-"*10)
+
 # tokenize
 offset = 0
 tokens = []
@@ -43,6 +48,9 @@ while offset < len(code):
         currentToken.nameCharacters.append(code[offset])
 
     offset += 1
+if(currentToken != None):#if the code doesn't end with whitespace or newline we need to still handle the last token
+    tokens.append(currentToken)
+    currentToken = None
 
 stack = []
 
@@ -51,7 +59,6 @@ for i in range(len(tokens)):
     if token.tokenType == TokenType.COMMAND:
         if token.getString() == "PUSH":
             value = tokens[i + 1]
-            print(value.getString())
             stack.append(int(value.getString()))  # convert to int
             i += 1  # we visited the push token and the value token, so increment again
         elif stack.__len__() > 1:
@@ -73,6 +80,9 @@ for i in range(len(tokens)):
 
             elif token.getString() == "EXP":
                 stack.append(math.pow(stack.pop(), stack.pop()))
-                print(stack)
+                
+        elif stack.__len__() > 0:
+            if(token.getString() == "PRINT"):
+                print(stack.pop())
 
     i += 1  # go to the next token
