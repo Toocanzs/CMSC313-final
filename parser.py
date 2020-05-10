@@ -17,9 +17,9 @@ class Token:
 
 
 code = """
-PUSH 5
-PUSH 6
-EXP
+PUSH 2
+PUSH 7
+ADD
 PRINT
 """
 
@@ -65,21 +65,26 @@ for i in range(len(tokens)):
             if token.getString() == "ADD":
                 # grab two values off the stack, add them, push the result back on the stack
                 stack.append(stack.pop() + stack.pop())
-                print(stack)
+                i+=1
             elif token.getString() == "SUB":
                 stack.append(stack.pop() - stack.pop())
+                i+=1
 
             elif token.getString() == "MUL":
                 stack.append(stack.pop() * stack.pop())
+                i+=1
 
             elif token.getString() == "DIV":
                 stack.append(stack.pop() / stack.pop())
+                i+=1
 
             elif token.getString() == "MOD":
                 stack.append(stack.pop() % stack.pop())
+                i+=1
 
             elif token.getString() == "EXP":
                 stack.append(math.pow(stack.pop(), stack.pop()))
+                i+=1
                 
         elif stack.__len__() > 0:
             if(token.getString() == "PRINT"):
