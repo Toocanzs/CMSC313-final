@@ -50,7 +50,10 @@ for i in range(len(tokens)):
             value = tokens[i+1]
             stack.append(int(value.getString()))#convert to int
             i += 1#we visited the push token and the value token, so increment again
-
-    i += 1
+        elif(token.getString() == "ADD"):
+            #grab two values off the stack, add them, push the result back on the stack
+            stack.append(stack.pop() + stack.pop());
+            
+    i += 1#go to the next token
         
         
