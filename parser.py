@@ -86,11 +86,12 @@ for i in range(len(tokens)):
                 stack.append(math.pow(stack.pop(), stack.pop()))
                 i+=1
                 
-            elif token.getString() == "FACT":
-                stack.append(math.factorial(stack.pop()))
             
         elif stack.__len__() > 0:
             if(token.getString() == "PRINT"):
                 print(stack.pop())
+ 
+            elif token.getString() == "FACT":
+                stack.append(math.factorial(stack.pop()))
 
     i += 1  # go to the next token
