@@ -21,6 +21,44 @@ PUSH 2
 PUSH 7
 ADD
 PRINT
+
+PUSH 9
+PUSH 9
+MUL
+PRINT
+
+PUSH 10
+PUSH 100
+DIV
+PRINT
+
+
+PUSH 6
+PUSH 9
+SUB
+PRINT
+
+PUSH 8
+PUSH 14
+MOD
+PRINT
+
+PUSH 8
+PUSH 2
+EXP
+PRINT
+
+PUSH 4
+FACT
+PRINT
+
+PUSH 3
+FACT
+PUSH 5
+MUL
+PUSH 3
+ADD
+PRINT
 """
 
 print("Input code:")
@@ -61,37 +99,30 @@ for i in range(len(tokens)):
             value = tokens[i + 1]
             stack.append(int(value.getString()))  # convert to int
             i += 1  # we visited the push token and the value token, so increment again
-        elif stack.__len__() > 1:
-            if token.getString() == "ADD":
-                # grab two values off the stack, add them, push the result back on the stack
-                stack.append(stack.pop() + stack.pop())
-                i+=1
-            elif token.getString() == "SUB":
-                stack.append(stack.pop() - stack.pop())
-                i+=1
 
-            elif token.getString() == "MUL":
-                stack.append(stack.pop() * stack.pop())
-                i+=1
-
-            elif token.getString() == "DIV":
-                stack.append(stack.pop() / stack.pop())
-                i+=1
-
-            elif token.getString() == "MOD":
-                stack.append(stack.pop() % stack.pop())
-                i+=1
-
-            elif token.getString() == "EXP":
-                stack.append(math.pow(stack.pop(), stack.pop()))
-                i+=1
-                
+        elif token.getString() == "ADD":
+            # grab two values off the stack, add them, push the result back on the stack
+            stack.append(stack.pop() + stack.pop())
             
-        elif stack.__len__() > 0:
-            if(token.getString() == "PRINT"):
-                print(stack.pop())
- 
-            elif token.getString() == "FACT":
-                stack.append(math.factorial(stack.pop()))
+        elif token.getString() == "SUB":
+            stack.append(stack.pop() - stack.pop())
+
+        elif token.getString() == "MUL":
+            stack.append(stack.pop() * stack.pop())
+
+        elif token.getString() == "DIV":
+            stack.append(stack.pop() / stack.pop())
+
+        elif token.getString() == "MOD":
+            stack.append(stack.pop() % stack.pop())
+
+        elif token.getString() == "EXP":
+            stack.append(int(math.pow(stack.pop(), stack.pop())))
+            
+        elif(token.getString() == "PRINT"):
+            print(stack.pop())
+            
+        elif token.getString() == "FACT":
+            stack.append(int(math.factorial(stack.pop())))
 
     i += 1  # go to the next token
