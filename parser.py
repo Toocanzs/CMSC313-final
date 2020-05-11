@@ -111,7 +111,7 @@ for i in range(len(tokens)):
             stack.append(stack.pop() * stack.pop())
 
         elif token.getString() == "DIV":
-            stack.append(stack.pop() / stack.pop())
+            stack.append(stack.pop() // stack.pop())
 
         elif token.getString() == "MOD":
             stack.append(stack.pop() % stack.pop())
