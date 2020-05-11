@@ -28,6 +28,10 @@ MUL
 PRINT
 
 PUSH 10
+NEGATE
+PRINT
+
+PUSH 10
 PUSH 100
 DIV
 PRINT
@@ -124,5 +128,8 @@ for i in range(len(tokens)):
             
         elif token.getString() == "FACT":
             stack.append(int(math.factorial(stack.pop())))
+            
+        elif token.getString() == "NEGATE":
+            stack.append((-1) * stack.pop())
 
     i += 1  # go to the next token
